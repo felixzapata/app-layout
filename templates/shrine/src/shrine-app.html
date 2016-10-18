@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
@@ -73,7 +74,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .logo {
-        background-image: url(//app-layout-assets.appspot.com/assets/shrine/shrine_logo_withicon.svg);
         width: 120px;
         height: 40px;
         background-size: 100% 100%;
@@ -122,7 +122,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         @apply(--layout-center-center);
         text-decoration: none;
         text-transform: uppercase;
-        color: #7c7c7c;
+        color: #000;
         font-weight: 500;
         padding: 0 20px;
         height: 100%;
@@ -173,7 +173,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
       @media (max-width: 1200px) {
         .logo {
-          background-image: url(//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg);
           width: 89px;
           height: 17px;
         }
@@ -221,9 +220,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer" swipe-open>
         <template is="dom-if" if="[[smallScreen]]">
           <app-toolbar class="profileBar">
-            <img class="profilePic" src="//app-layout-assets.appspot.com/assets/shrine/profile_pic.jpg"  width="30" height="30">
+            <img class="profilePic" src="//app-layout-assets.appspot.com/assets/shrine/profile_pic.jpg"  width="30" height="30" alt="">
             <div class="profileName">Stella</div>
-            <paper-icon-button icon="settings"></paper-icon-button>
+            <paper-icon-button icon="settings" alt="show settings"></paper-icon-button>
           </app-toolbar>
           <div class="list">
             <template is="dom-repeat" items="[[sections]]" as="section" initial-count="1">
@@ -238,15 +237,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header id="header" effects="waterfall" fixed="[[smallScreen]]" condenses="[[!smallScreen]]" reveals="[[!smallScreen]]">
           <app-toolbar id="mainToolbar">
             <div class="navItem leftItem">
-              <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-              <a href="#[[sectionData.section]]"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
+              <paper-icon-button icon="menu" drawer-toggle alt="Toogle navigation menu"></paper-icon-button>
+              <a href="#[[sectionData.section]]" tabindex="-1"><paper-icon-button icon="arrow-back" alt="Back to the home"></paper-icon-button></a>
             </div>
             <div class="spacer">
-              <div class="logo"></div>
+              <img src="http://app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo" alt="SHRINE">
             </div>
             <div class="navItem">
-              <paper-icon-button icon="shopping-cart"></paper-icon-button>
-              <paper-icon-button icon="more-vert"></paper-icon-button>
+              <paper-icon-button icon="shopping-cart" alt="Show shopping cart"></paper-icon-button>
+              <paper-icon-button icon="more-vert" alt="Show more options"></paper-icon-button>
             </div>
           </app-toolbar>
           <template is="dom-if" if="[[_shouldShowTabs(onDetailPage, smallScreen)]]">
